@@ -1,10 +1,20 @@
+html.fixed {
+  position : fixed;
+  overflow-y: scroll;
+  width : 100%;
+}
 body {
+  height :100000px;
   font-size: 16px;
   line-height: 1;
   font-family: "Roboto", "Noto Sans KR", sans-serif;
   word-break: keep-all;
+    color : #1D1D1D;
 }
-
+a {
+  text-decoration:  none;
+  color : #1D1D1D;
+}
 /* Header / Menu */
 header {
   background-color: #3a3a3a;
@@ -14,17 +24,22 @@ header .inner {
   max-width: 1020px;
   /*브라우저가 좌우 여백을 자동으로 계산해서 가운데 정렬되도록 auto*/
   margin: 0 auto;
+
+  position :relative;
 }
+
 
 header ul.menu {
   display: flex;
   height: 44px;
   justify-content: space-between;
 }
+
 header ul.menu > li {
   display: flex;
   position: relative;
 }
+
 header ul.menu > li > a {
   padding: 0 10px;
   font-size: 11px;
@@ -32,7 +47,6 @@ header ul.menu > li > a {
   align-items: center;
   color: #f5f5f5;
   opacity: 0.8;
-  text-decoration: none;
 }
 
 header ul.menu > li.apple-logo > a,
@@ -62,7 +76,7 @@ header .basket {
   width: 290px;
   padding: 10px 20px;
   border: 1px solid #d2d2d2;
-  border-radius: 10px;
+  border-radius: 10px; 
   box-sizing: border-box;
   background-color: #fff;
   position: absolute;
@@ -70,24 +84,157 @@ header .basket {
   /*header ul.menu > li */
   top: calc(100% + 4px);
   right: 6px;
+
+  transition: .4s;
+  /*애니메이션 적용할 땐 visibilty로 요소를 숨겨준다. display:none 사용하면 애니메이션 적용안됨.
+  display는 요소의 특성을 나타내는 속성이고, visibility는 요소의 상태를 나타내는 속성이다.
+  */
+  visibility : hidden;
+  opacity:0;
 }
+header .basket.show {
+  visibility: visible;
+  opacity: 1;
+}
+header .basket .arrow {
+  width : 20px;
+  height: 10px;
+  position: absolute;
+  top: -10px;
+  right : 12px;
+  overflow:  hidden;
+}
+header .basket .arrow::before {
+  content: "";
+  border: 1px solid #d2d2d2;
+  width : 12px;
+  height: 12px;
+  background-color: #fff;
+  transform: rotate(45deg);
+  transform-origin : 0 0;
+  position: absolute;
+  top: 0;
+  left :50%;
+}
+
 header .basket .message {
   padding: 30px 0px;
-  color: #3a3a3a;
+  font-size: 13px;
+  color: #6e6e6e;
+  text-align: center;
 }
 header .basket > ul {
+  margin-top : 10px;
 }
-header .basket > ul > li {
+header .basket > ul  li {
+  border-top: 1px solid #d2d2d2;
+}
+header .basket > ul  li  a {
   display: flex;
-
-  border-top: 1px solid #e5e5e5;
-  border-bottom: 1px solid #e5e5e5;
+  padding: 14px;
+  font-size:13px;
+  color : #0071E3;
 }
-header .basket > ul > li > a {
-  height: 40px;
-  padding: 10px;
-  box-sizing: border-box;
+header .basket  ul li a:hover {
+  color: #000;
+}
 
-  color: blue;
-  text-decoration: none;
+/*Header / Search */
+header .search-wrap {
+  display:  none;
+  position : absolute;
+  top :0;
+  left: 0;
+  width : 100%;
+}
+header .search {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+header .search .shadow {
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height:100%;
+  background-color: rgba(0, 0, 0, .4);
+}
+header .search .textfield {
+  position : relative;
+}
+header .search input {
+  width : 100%;
+  height: 44px;
+  padding: 0 40px;
+  box-sizing: border-box;
+  border: none;
+  outline: none;
+  background-color : transparent;
+  font-size : 17px;
+}
+header .search .search-icon {
+  width : 40px;
+  height : 40px;
+  background-image : url("../images/header_search.svg");
+  background-repeat : no-repeat;
+  background-position : center;
+  position : absolute;
+  top:0px;
+  left:0px;
+  opacity: .4;
+}
+header .search .search-closer {
+  width : 40px;
+  height : 40px;
+  background-image : url("../images/header_close.svg");
+  background-repeat : no-repeat;
+  background-position : center;
+  position : absolute;
+  top:0px;
+  right : 0px;
+  opacity: .4;
+  cursor: pointer;
+}
+header .search .search-closer:hover {
+  opacity: 1;
+}
+header .search .search-canceler {}
+
+
+header .search .autocompletes {
+  width : 100%;
+  padding : 26px 40px 20px;
+  border-radius: 0 0 18px 18px;
+  box-sizing: border-box;
+  background-color: #fff;
+  position: absolute;
+  top: 44px;
+  left :0px;
+
+}
+header .search .autocompletes  h3{
+  font-size: 12px;
+  color :#6e6e6e;
+  margin-bottom: 12px;
+}
+header .search .autocompletes  ul li a {
+  display: block;
+  margin : 0 -14px;
+  padding :10px 0 10px 30px;
+  font-size :14px;
+  cursor: pointer;
+}
+
+header .search .autocompletes  ul li:hover a { 
+  background-color: #f5f5f5;
+  color: #0071E3;
+}
+
+header.searching ul.menu > li {
+  display:  none;
+}
+
+header.searching .search-wrap {
+  display:  block;
 }
