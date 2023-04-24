@@ -16,6 +16,13 @@ a {
   color: #1d1d1d;
 }
 
+img {
+  /*img는 inline요소라서 text처럼 baseline이라는 하단에 빈영역이 생김. 그래서 block요소로 변경*/
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 /* Btn */
 .btn {
   display: flex;
@@ -318,4 +325,32 @@ nav .menu li:hover a {
 }
 nav .menu li.active:hover a {
   color: #1d1d1d;
+}
+
+/*Hero*/
+.hero {
+}
+.hero .inner {
+}
+.hero h1 {
+}
+.hero figure {
+}
+.hero figure img {
+}
+.hero figure figcaption {
+}
+.hero figure figcaption .caption-camera {
+}
+.hero figure figcaption .caption-chip {
+}
+.hero figure figcaption .caption-storage {
+}
+.hero h2 {
+}
+.hero p.pricing {
+}
+.hero p.description {
+}
+.hero .links {
 }
