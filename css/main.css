@@ -98,8 +98,15 @@ a.link:hover {
 a.link::after {
   content: " >";
 }
+
+/*Featrue*/
+.feature {
+  display: flex;
+}
+
 /*Figures*/
 .figures {
+  flex-grow: 1;
   position: relative;
 }
 .figures figure,
@@ -114,6 +121,32 @@ a.link::after {
   left: 0;
 }
 
+/* Infos*/
+.infos {
+  display: flex;
+  flex-direction: column;
+}
+.infos.infos--center {
+  justify-content: center;
+}
+.infos.infos--end {
+  justify-content: flex-end;
+}
+.info {
+  max-width: 330px;
+  margin-bottom: 24px;
+}
+.info .icon {
+  width: 100px;
+  height: 100px;
+  margin: 0 0 -15px -30px;
+  background-image: url("../images/sprite_apps.png");
+}
+.info p {
+  font-size: 21.5px;
+  font-weight: 600;
+  line-height: 1.5;
+}
 /* Header / Menu */
 header {
   --header-height: 44px;
@@ -459,4 +492,55 @@ nav .menu li.active:hover a {
 }
 .hero .links {
   margin-top: 30px;
+}
+
+/* Power */
+
+.power {
+  margin-top: 110px;
+}
+
+/* Power  / Multiple Apps */
+.power .multiple-apps h1 {
+  width: 500px;
+  height: 280px;
+  background-image: url("../images/power_headline.png");
+  transform: translate(104px, 0);
+}
+.power .multiple-apps .figures {
+  height: 773px;
+}
+.power .multiple-apps figcaption {
+  width: 138px;
+  height: 46px;
+  background-image: url("../images/power_multiple_apps_caption.png");
+  transform: translate(703px, -47px);
+}
+
+/* Power  / Arcade */
+.power .arcade {
+  margin-top: 55px;
+}
+.power .arcade .figures {
+  height: 600px;
+}
+.power .arcade figure {
+  transform: translate(-347px, -90px);
+}
+
+.power .arcade figcaption {
+  width: 150px;
+  height: 77px;
+  background-image: url("../images/power_arcade_caption.png");
+  transform: translate(483px, 653px);
+}
+
+/* Power  / Create */
+.power .create {
+}
+.power .create .figures {
+}
+.power .create figure {
+}
+.power .create figcaption {
 }
