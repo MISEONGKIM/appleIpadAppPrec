@@ -65,3 +65,15 @@ function hideSearch() {
   searchDelayEls.reverse();
   searchInputEl.value = "";
 }
+
+//요소의 가시성 관찰
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(
+    (entry) => entry.isIntersecting && entry.target.classList.add("show")
+  );
+});
+
+const infoEls = document.querySelectorAll(".info");
+infoEls.forEach((info) => {
+  io.observe(info);
+});
