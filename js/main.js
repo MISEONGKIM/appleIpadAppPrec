@@ -77,3 +77,19 @@ const infoEls = document.querySelectorAll(".info");
 infoEls.forEach((info) => {
   io.observe(info);
 });
+
+const video = document.querySelector(".stage video");
+const playBtn = document.querySelector(".stage .controller--play");
+const pauseBtn = document.querySelector(".stage .controller--pause");
+
+playBtn.addEventListener("click", () => {
+  video.play();
+  pauseBtn.classList.remove("hide");
+  playBtn.classList.add("hide");
+});
+
+pauseBtn.addEventListener("click", () => {
+  video.pause();
+  playBtn.classList.remove("hide");
+  pauseBtn.classList.add("hide");
+});
