@@ -38,7 +38,10 @@ const searchDelayEls = [...searchWrapEl.querySelectorAll("li")];
 const searchInputEl = searchWrapEl.querySelector("input");
 
 searchStarterEl.addEventListener("click", showSearch);
-searchCloserEl.addEventListener("click", hideSearch);
+searchCloserEl.addEventListener("click", (e) => {
+  e.stopPropagation();
+  hideSearch();
+});
 shadowEl.addEventListener("click", hideSearch);
 
 function showSearch() {
@@ -80,11 +83,30 @@ const menuStarterEl = document.querySelector("header .menu-starter");
 menuStarterEl.addEventListener("click", () => {
   if (headerEl.classList.contains("menuing")) {
     headerEl.classList.remove("menuing");
+    searchInputEl.value = "";
     playScroll();
     return;
   }
   headerEl.classList.add("menuing");
   stopScroll();
+});
+
+const searchTextFieldEl = document.querySelector("header .textfield");
+const searchCancelEl = document.querySelector("header .search-canceler");
+searchTextFieldEl.addEventListener("click", () => {
+  headerEl.classList.add("searching--mobile");
+  searchInputEl.focus();
+});
+searchCancelEl.addEventListener("click", () => {
+  headerEl.classList.remove("searching--mobile");
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth <= 740) {
+    headerEl.classList.remove("searching");
+    return;
+  }
+  headerEl.classList.remove("searching--moblie");
 });
 //요소의 가시성 관찰
 const io = new IntersectionObserver((entries) => {
