@@ -1,4 +1,5 @@
 import ipads from "../data/ipads.js";
+import navigations from "../data/navigations.js";
 
 const basketStarterEl = document.querySelector("header .basket-starter");
 const basketEl = basketStarterEl.querySelector(".basket");
@@ -120,3 +121,26 @@ ipads.forEach((ipad) => {
 
   itemsEl.append(itemEl);
 });
+const navigationsEl = document.querySelector("footer .navigations");
+navigations.forEach((nav) => {
+  const mapEl = document.createElement("div");
+  mapEl.classList.add("map");
+
+  const mapList = nav.maps.reduce(
+    (acc, map) =>
+      (acc += /* html */ `<li>
+    <a href="${map.url}">${map.name}</a>
+  </li>`),
+    ""
+  );
+  mapEl.innerHTML = /*html */ `
+    <h3>
+      <span class='text'>${nav.title}</span>
+    </h3>
+    <ul>${mapList}</ul>
+  `;
+  navigationsEl.append(mapEl);
+});
+
+const thisYearEl = document.querySelector("span.this-year");
+thisYearEl.textContent = new Date().getFullYear();
