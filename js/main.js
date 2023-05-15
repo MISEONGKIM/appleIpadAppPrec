@@ -108,6 +108,29 @@ window.addEventListener("resize", () => {
   }
   headerEl.classList.remove("searching--moblie");
 });
+
+const navEl = document.querySelector("nav");
+const navMenuToggleEl = document.querySelector("nav .menu-toggler");
+const navShadowEl = document.querySelector("nav .shadow");
+navMenuToggleEl.addEventListener("click", () => {
+  if (navEl.classList.contains("menuing")) {
+    hideNavMenu();
+    return;
+  }
+  showNavMenu();
+});
+navEl.addEventListener("click", (e) => {
+  e.stopPropagation();
+});
+navShadowEl.addEventListener("click", hideNavMenu);
+window.addEventListener("click", hideNavMenu);
+
+function showNavMenu() {
+  navEl.classList.add("menuing");
+}
+function hideNavMenu() {
+  navEl.classList.remove("menuing");
+}
 //요소의 가시성 관찰
 const io = new IntersectionObserver((entries) => {
   entries.forEach(
