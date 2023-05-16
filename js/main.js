@@ -198,6 +198,7 @@ navigations.forEach((nav) => {
   mapEl.innerHTML = /*html */ `
     <h3>
       <span class='text'>${nav.title}</span>
+      <span class='icon'>+</span>
     </h3>
     <ul>${mapList}</ul>
   `;
@@ -206,3 +207,12 @@ navigations.forEach((nav) => {
 
 const thisYearEl = document.querySelector("span.this-year");
 thisYearEl.textContent = new Date().getFullYear();
+
+const mapEls = document.querySelectorAll("footer .navigations .map");
+mapEls.forEach((el) => {
+  const h3El = el.querySelector("h3");
+  h3El.addEventListener("click", () => {
+    //add, remove의 역할을 동시에 함
+    el.classList.toggle("active");
+  });
+});
