@@ -679,7 +679,8 @@ header.searching .search .autocompletes li {
   }
   header .clone-menu {
     display: block;
-    /*자연스럽게 나타나는 효과를 위해 visibilty 사용 */
+    /*자연스럽게 나타나는 효과를 위해  visibility: hidden;
+    opacity: 0; 사용 */
     visibility: hidden;
     opacity: 0;
     position: absolute;
